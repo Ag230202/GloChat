@@ -1,0 +1,19 @@
+# Python
+venv/
+*.pyc
+__pycache__/
+db.sqlite3
+media/
+
+# Node
+node_modules/
+dist/
+.vite/
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+
+.agents/
