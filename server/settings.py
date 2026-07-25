@@ -128,14 +128,18 @@ USE_TZ = True
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ASGI_APPLICATION = 'server.asgi.application'
-
-import os
 
 CHANNEL_LAYERS = {
     'default': {
@@ -145,7 +149,6 @@ CHANNEL_LAYERS = {
         },
     },
 }
-
 CORS_ALLOWED_ORIGINS = [
     os.getenv(
         "FRONTEND_URL",
