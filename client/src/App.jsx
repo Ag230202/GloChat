@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { MessageSquare, Send, LogOut, User, Image, Search } from 'lucide-react';
 
-const API_BASE = 'http://localhost:8000';
-const WS_BASE = 'ws://localhost:8000';
+const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:8000';
+const WS_BASE = import.meta.env.VITE_WS_BASE || 'ws://localhost:8000';
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem('token') || '');
