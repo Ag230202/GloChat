@@ -19,9 +19,25 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from django.http import JsonResponse
+import redis
+import os
+
+def redis_ping(request):
+    try:
+        r = redis.Redis.from_url(os.environ.get("REDIS_URL", "redis://127.0.0.1:6379/0"))
+        return JsonResponse({
+            "ping": r.ping()
+        })
+    except Exception as e:
+        return JsonResponse({
+            "error": str(e)
+        }, status=500)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('chat.urls')),
+    path('redis-ping/', redis_ping, name='redis_ping'),
 ]
 
 if settings.DEBUG:
