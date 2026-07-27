@@ -1,6 +1,7 @@
 django
 channels
-channels-redis==6.4.0
+channels-redis
+redis==6.4.0
 djangorestframework
 djangorestframework-simplejwt
 django-cors-headers
